@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+venv/
+ENV/
+
+# Django
+db.sqlite3
+db.sqlite3-journal
+media/
+static/
+staticfiles/
+logs/
+*.log
+
+# IDE - WebStorm / PyCharm
+.idea/
+*.iml
+.vscode/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# На случай, если появится фронтенд в этой же папке
+node_modules/
+dist/
+.npm
