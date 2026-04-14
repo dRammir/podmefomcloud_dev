@@ -64,6 +64,7 @@ python manage.py runserver
 | Метод | Endpoint | Описание |
 |-------|----------|----------|
 | GET | `/api/my-tracks/` | Все мои треки (включая pending/rejected) |
+| GET | `/api/liked-tracks/` | Лайкнутые треки |
 
 ## Авторизация
 
