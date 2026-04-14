@@ -6,7 +6,7 @@ from rest_framework.routers import DefaultRouter
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 from podmefomcloudapp.views import (
     TrackViewSet, RegisterView, LogoutView, ProfileView, MyTracksView,
-    LoginView, TokenRefreshView
+    LoginView, TokenRefreshView, LikedTracksView
 )
 
 router = DefaultRouter()
@@ -24,6 +24,7 @@ urlpatterns = [
     
     # User tracks
     path('api/my-tracks/', MyTracksView.as_view(), name='my_tracks'),
+    path('api/liked-tracks/', LikedTracksView.as_view(), name='liked_tracks'),
     
     # API routes
     path('api/', include(router.urls)),

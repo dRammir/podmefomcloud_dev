@@ -314,6 +314,29 @@ class MyTracksView(APIView):
 
 
 @extend_schema_view(
+    get=extend_schema(
+        summary="Лайкнутые треки",
+        description="Возвращает треки, которые лайкнул текущий пользователь",
+        tags=['Треки'],
+        responses={
+            200: TrackSerializer(many=True),
+            401: {'description': 'Неавторизованный доступ'}
+        }
+    )
+)
+class LikedTracksView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        liked_tracks = Track.objects.filter(
+            likes__user=request.user,
+            status='approved'
+        ).order_by('-likes__created_at')
+        serializer = TrackSerializer(liked_tracks, many=True, context={'request': request})
+        return Response(serializer.data)
+
+
+@extend_schema_view(
     list=extend_schema(
         summary="Список треков",
         description="Возвращает одобренные треки. Админы видят все.",
